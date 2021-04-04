@@ -20,6 +20,7 @@ public class ProjectListViewAdapter extends SimpleAdapter {
     // 各行が保持するデータ保持クラス
     public class ViewHolder {
         TextView project_name;
+        TextView project_description;
     }
 
     public ProjectListViewAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to) {
@@ -41,6 +42,7 @@ public class ProjectListViewAdapter extends SimpleAdapter {
 
             holder = new ViewHolder();
             holder.project_name = (TextView) view.findViewById(R.id.project_name);
+            holder.project_description = (TextView) view.findViewById(R.id.project_description);
 
             view.setTag(holder);
         } else {
@@ -51,6 +53,8 @@ public class ProjectListViewAdapter extends SimpleAdapter {
         // holderにデータをセットする
         String project_name = ((HashMap<?, ?>) m_listData.get(position)).get("project_name").toString();
         holder.project_name.setText(project_name);
+        String project_description = ((HashMap<?, ?>) m_listData.get(position)).get("project_description").toString();
+        holder.project_description.setText(project_description);
 
         // セル上にあるボタンの処理
         Button btn = (Button) view.findViewById(R.id.edit_button);
